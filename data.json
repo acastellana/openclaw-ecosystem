@@ -67,6 +67,18 @@
       "lastChecked": "2026-02-02T12:00:00Z"
     },
     {
+      "id": "eco_extra_011",
+      "name": "@moltbunker (X account)",
+      "url": "https://x.com/moltbunker",
+      "category": "community",
+      "subcategory": "x_account",
+      "description": "Molt ecosystem related X account (needs review/verification).",
+      "status": "unknown",
+      "notes": "Source: Albert message",
+      "discoveredAt": "2026-02-02T22:47:45Z",
+      "lastChecked": "2026-02-02T22:47:45Z"
+    },
+    {
       "id": "eco_extra_001",
       "discoveredAt": "2026-02-02T19:37:17Z",
       "lastChecked": "2026-02-02T19:37:17Z",
