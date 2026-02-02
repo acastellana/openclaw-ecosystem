@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🦞 OpenClaw Ecosystem Tracker</title>
+  <meta name="description" content="Comprehensive directory of the OpenClaw ecosystem - tools, platforms, skills, hosting, and community resources.">
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --bg-card: #1a1a1a;
+      --bg-hover: #252525;
+      --text: #e5e5e5;
+      --text-dim: #888;
+      --accent: #ef4444;
+      --accent-dim: rgba(239, 68, 68, 0.2);
+      --green: #22c55e;
+      --yellow: #eab308;
+      --blue: #3b82f6;
+      --purple: #a855f7;
+      --border: #333;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container { max-width: 1400px; margin: 0 auto; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    h1 { font-size: 1.8rem; display: flex; align-items: center; gap: 12px; }
+    h1 span { font-size: 2rem; }
+    .subtitle { color: var(--text-dim); font-size: 0.9rem; margin-top: 4px; }
+    .stats {
+      display: flex;
+      gap: 24px;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+    }
+    .stat-value { font-weight: 700; color: var(--accent); font-size: 1.1rem; }
+    .controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    input, select {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+    input:focus, select:focus { outline: none; border-color: var(--accent); }
+    input[type="text"] { min-width: 280px; }
+    select { cursor: pointer; }
+    .categories {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .category-btn {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.2s;
+      color: var(--text);
+    }
+    .category-btn:hover { border-color: var(--accent); }
+    .category-btn.active {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .category-btn .count {
+      background: var(--bg);
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-size: 0.7rem;
+      margin-left: 6px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    .card-title {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text);
+    }
+    .card-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .card-title a:hover { color: var(--accent); }
+    .card-category {
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 12px;
+      background: var(--bg);
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .card-description {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+    .card-status {
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 500;
+    }
+    .status-active { background: rgba(34, 197, 94, 0.2); color: var(--green); }
+    .status-deprecated { background: rgba(234, 179, 8, 0.2); color: var(--yellow); }
+    .status-scam { background: rgba(239, 68, 68, 0.3); color: var(--accent); }
+    .status-unknown { background: var(--bg); color: var(--text-dim); }
+    .stars { color: var(--yellow); }
+    .empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-dim);
+    }
+    .empty-icon { font-size: 4rem; margin-bottom: 16px; }
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .loading {
+      text-align: center;
+      padding: 60px;
+      color: var(--text-dim);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1><span>🦞</span> OpenClaw Ecosystem</h1>
+        <div class="subtitle">Comprehensive directory of tools, platforms, and resources</div>
+      </div>
+      <div class="stats">
+        <div><span class="stat-value" id="totalCount">0</span> items</div>
+        <div><span class="stat-value" id="categoryCount">0</span> categories</div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="Search ecosystem...">
+      <select id="statusFilter">
+        <option value="">All statuses</option>
+        <option value="active">Active</option>
+        <option value="deprecated">Deprecated</option>
+        <option value="scam">Scam ⚠️</option>
+        <option value="unknown">Unknown</option>
+      </select>
+    </div>
+
+    <div class="categories" id="categoriesContainer"></div>
+
+    <div class="grid" id="itemsGrid">
+      <div class="loading">Loading ecosystem data...</div>
+    </div>
+    <div class="empty" id="emptyState" style="display: none;">
+      <div class="empty-icon">🔍</div>
+      <p>No items found matching your criteria</p>
+    </div>
+
+    <footer>
+      <p>Built by <a href="https://github.com/kstellana">@kstellana</a> • 
+         Data updated: <span id="lastUpdated">-</span> • 
+         <a href="https://github.com/openclaw/openclaw">OpenClaw on GitHub</a></p>
+    </footer>
+  </div>
+
+  <script>
+    let allItems = [];
+    let activeCategory = null;
+
+    const categoryLabels = {
+      official_repos: '📦 Official Repos',
+      community_platforms: '🌐 Community Platforms',
+      skill_registries: '🧩 Skill Registries',
+      hosting: '☁️ Hosting',
+      docker: '🐳 Docker',
+      iac: '⚙️ IaC',
+      third_party_github: '🔧 Third-Party GitHub',
+      browser_tools: '🔌 Browser Tools',
+      mcp: '🔗 MCP',
+      security: '🔒 Security',
+      monitoring: '📊 Monitoring',
+      leaderboards: '🏆 Leaderboards',
+      community: '💬 Community',
+      documentation: '📚 Documentation',
+      tutorials: '📖 Tutorials',
+      consulting: '💼 Consulting',
+      crypto: '💰 Crypto',
+      alternatives: '🔀 Alternatives'
+    };
+
+    async function loadData() {
+      try {
+        const res = await fetch('data.json');
+        const data = await res.json();
+        allItems = data.items || [];
+        document.getElementById('totalCount').textContent = allItems.length;
+        document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString();
+        renderCategories();
+        renderItems();
+      } catch (err) {
+        document.getElementById('itemsGrid').innerHTML = `
+          <div class="empty">
+            <div class="empty-icon">❌</div>
+            <p>Failed to load data: ${err.message}</p>
+          </div>
+        `;
+      }
+    }
+
+    function getFilteredItems() {
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const status = document.getElementById('statusFilter').value;
+      
+      return allItems.filter(item => {
+        if (activeCategory && item.category !== activeCategory) return false;
+        if (status && item.status !== status) return false;
+        if (search) {
+          const text = `${item.name} ${item.description || ''} ${item.category} ${item.subcategory || ''}`.toLowerCase();
+          if (!text.includes(search)) return false;
+        }
+        return true;
+      });
+    }
+
+    function renderCategories() {
+      const counts = {};
+      allItems.forEach(item => {
+        counts[item.category] = (counts[item.category] || 0) + 1;
+      });
+      
+      document.getElementById('categoryCount').textContent = Object.keys(counts).length;
+      
+      const container = document.getElementById('categoriesContainer');
+      container.innerHTML = `
+        <button class="category-btn ${!activeCategory ? 'active' : ''}" onclick="filterCategory(null)">
+          All <span class="count">${allItems.length}</span>
+        </button>
+      ` + Object.entries(counts)
+        .sort((a, b) => b[1] - a[1])
+        .map(([cat, count]) => `
+          <button class="category-btn ${activeCategory === cat ? 'active' : ''}" onclick="filterCategory('${cat}')">
+            ${categoryLabels[cat] || cat} <span class="count">${count}</span>
+          </button>
+        `).join('');
+    }
+
+    function filterCategory(cat) {
+      activeCategory = cat;
+      renderCategories();
+      renderItems();
+    }
+
+    function renderItems() {
+      const filtered = getFilteredItems();
+      const grid = document.getElementById('itemsGrid');
+      const empty = document.getElementById('emptyState');
+      
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        empty.style.display = 'block';
+        return;
+      }
+      
+      empty.style.display = 'none';
+      grid.innerHTML = filtered.map(item => `
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              ${item.url ? `<a href="${item.url}" target="_blank" rel="noopener">${item.name}</a>` : item.name}
+              ${item.stars ? `<span class="stars"> ⭐ ${formatStars(item.stars)}</span>` : ''}
+            </div>
+            <span class="card-category">${item.subcategory || item.category}</span>
+          </div>
+          <div class="card-description">${item.description || 'No description'}</div>
+          <div class="card-meta">
+            <span class="card-status status-${item.status}">${item.status}</span>
+            <span>${item.discoveredAt ? new Date(item.discoveredAt).toLocaleDateString() : '-'}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function formatStars(n) {
+      if (n >= 1000) return (n / 1000).toFixed(n >= 10000 ? 0 : 1) + 'k';
+      return n;
+    }
+
+    function debounce(fn, ms) {
+      let timeout;
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => fn(...args), ms);
+      };
+    }
+
+    document.getElementById('searchInput').addEventListener('input', debounce(renderItems, 200));
+    document.getElementById('statusFilter').addEventListener('change', renderItems);
+
+    // Load data on start
+    loadData();
+  </script>
+</body>
+</html>
