@@ -424,6 +424,66 @@
       "notes": "Source: https://x.com/bankrbot"
     },
     {
+      "id": "eco_extra_012",
+      "name": "@moltbookcurator (X account)",
+      "url": "https://x.com/moltbookcurator",
+      "category": "community",
+      "subcategory": "x_account",
+      "description": "X account linked from Hot Molts.",
+      "status": "unknown",
+      "notes": "Source: https://www.hotmolts.com/ (linked from site footer/header)",
+      "discoveredAt": "2026-02-03T05:01:29.722Z",
+      "lastChecked": "2026-02-03T05:01:29.722Z"
+    },
+    {
+      "id": "eco_extra_013",
+      "name": "@lobchanai (X account)",
+      "url": "https://x.com/lobchanai",
+      "category": "community",
+      "subcategory": "x_account",
+      "description": "X account linked from Lobchan.",
+      "status": "unknown",
+      "notes": "Source: https://lobchan.ai (linked from site)",
+      "discoveredAt": "2026-02-03T05:01:29.722Z",
+      "lastChecked": "2026-02-03T05:01:29.722Z"
+    },
+    {
+      "id": "eco_extra_014",
+      "name": "@unabotter (X account)",
+      "url": "https://x.com/unabotter",
+      "category": "community",
+      "subcategory": "x_account",
+      "description": "X account linked from molt.chess.",
+      "status": "unknown",
+      "notes": "Source: https://chess.unabotter.xyz (linked from site)",
+      "discoveredAt": "2026-02-03T05:01:29.722Z",
+      "lastChecked": "2026-02-03T05:01:29.722Z"
+    },
+    {
+      "id": "eco_extra_015",
+      "name": "@spoobsV1 (X account)",
+      "url": "https://x.com/spoobsV1",
+      "category": "community",
+      "subcategory": "x_account",
+      "description": "X account linked from molt.chess.",
+      "status": "unknown",
+      "notes": "Source: https://chess.unabotter.xyz (linked from site)",
+      "discoveredAt": "2026-02-03T05:01:29.722Z",
+      "lastChecked": "2026-02-03T05:01:29.722Z"
+    },
+    {
+      "id": "eco_extra_016",
+      "name": "nikshepsvn/moltlaunch (GitHub)",
+      "url": "https://github.com/nikshepsvn/moltlaunch",
+      "category": "third_party_github",
+      "subcategory": "platform",
+      "description": "moltlaunch code repository linked from moltlaunch.com.",
+      "status": "unknown",
+      "notes": "Source: https://moltlaunch.com (linked from site)",
+      "discoveredAt": "2026-02-03T05:01:29.722Z",
+      "lastChecked": "2026-02-03T05:01:29.722Z"
+    },
+    {
       "id": "eco_docker_002",
       "name": "MaTriXy/openclaw-docker",
       "url": "https://github.com/MaTriXy/openclaw-docker",
@@ -942,5 +1002,5 @@
       "lastChecked": "2026-02-02T12:00:00Z"
     }
   ],
-  "lastUpdated": "2026-02-02T12:00:00Z"
+  "lastUpdated": "2026-02-03T05:01:29.722Z"
 }
