@@ -185,7 +185,11 @@
     <header>
       <div>
         <h1><span>🦞</span> OpenClaw Ecosystem</h1>
-        <div class="subtitle">Comprehensive directory of tools, platforms, and resources</div>
+        <div class="subtitle">
+          Comprehensive directory of tools, platforms, and resources •
+          <a href="https://acastellana.github.io/openclaw-ecosystem/" target="_blank" rel="noopener">GitHub Pages</a> •
+          <a href="https://github.com/acastellana/openclaw-ecosystem" target="_blank" rel="noopener">Source</a>
+        </div>
       </div>
       <div class="stats">
         <div><span class="stat-value" id="totalCount">0</span> items</div>
@@ -201,6 +205,18 @@
         <option value="deprecated">Deprecated</option>
         <option value="scam">Scam ⚠️</option>
         <option value="unknown">Unknown</option>
+      </select>
+      <select id="discoveredFilter">
+        <option value="24h" selected>Discovered: last 24h</option>
+        <option value="7d">Discovered: last 7 days</option>
+        <option value="30d">Discovered: last 30 days</option>
+        <option value="all">Discovered: all time</option>
+      </select>
+      <select id="sortBy">
+        <option value="discoveredDesc" selected>Sort: newest discovered</option>
+        <option value="discoveredAsc">Sort: oldest discovered</option>
+        <option value="starsDesc">Sort: stars</option>
+        <option value="nameAsc">Sort: name</option>
       </select>
     </div>
 
@@ -265,19 +281,61 @@
       }
     }
 
+    function parseDiscoveredAt(item) {
+      if (!item.discoveredAt) return null;
+      const d = new Date(item.discoveredAt);
+      return isNaN(d.getTime()) ? null : d;
+    }
+
+    function getDiscoveredWindowMs() {
+      const v = document.getElementById('discoveredFilter').value;
+      if (v === '24h') return 24 * 60 * 60 * 1000;
+      if (v === '7d') return 7 * 24 * 60 * 60 * 1000;
+      if (v === '30d') return 30 * 24 * 60 * 60 * 1000;
+      return null; // all
+    }
+
     function getFilteredItems() {
       const search = document.getElementById('searchInput').value.toLowerCase();
       const status = document.getElementById('statusFilter').value;
-      
-      return allItems.filter(item => {
+      const windowMs = getDiscoveredWindowMs();
+      const cutoff = windowMs ? (Date.now() - windowMs) : null;
+
+      let items = allItems.filter(item => {
         if (activeCategory && item.category !== activeCategory) return false;
         if (status && item.status !== status) return false;
+        if (cutoff) {
+          const d = parseDiscoveredAt(item);
+          if (!d) return false;
+          if (d.getTime() < cutoff) return false;
+        }
         if (search) {
           const text = `${item.name} ${item.description || ''} ${item.category} ${item.subcategory || ''}`.toLowerCase();
           if (!text.includes(search)) return false;
         }
         return true;
       });
+
+      const sortBy = document.getElementById('sortBy').value;
+      if (sortBy === 'discoveredDesc') {
+        items.sort((a, b) => {
+          const da = parseDiscoveredAt(a)?.getTime() ?? 0;
+          const db = parseDiscoveredAt(b)?.getTime() ?? 0;
+          return db - da;
+        });
+      } else if (sortBy === 'discoveredAsc') {
+        items.sort((a, b) => {
+          const da = parseDiscoveredAt(a)?.getTime() ?? 0;
+          const db = parseDiscoveredAt(b)?.getTime() ?? 0;
+          return da - db;
+        });
+      } else if (sortBy === 'starsDesc') {
+        items.sort((a, b) => (b.stars || 0) - (a.stars || 0));
+      } else if (sortBy === 'nameAsc') {
+        items.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+      }
+
+      return items;
     }
 
     function renderCategories() {
@@ -353,6 +411,8 @@
 
     document.getElementById('searchInput').addEventListener('input', debounce(renderItems, 200));
     document.getElementById('statusFilter').addEventListener('change', renderItems);
+    document.getElementById('discoveredFilter').addEventListener('change', renderItems);
+    document.getElementById('sortBy').addEventListener('change', renderItems);
 
     // Load data on start
     loadData();
