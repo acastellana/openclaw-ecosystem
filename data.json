@@ -1000,7 +1000,137 @@
       "status": "active",
       "discoveredAt": "2026-02-02T00:00:00Z",
       "lastChecked": "2026-02-02T12:00:00Z"
+    },
+    {
+      "name": "Clawnch",
+      "url": "",
+      "category": "defi",
+      "subcategory": "launchpad",
+      "description": "Agent-only token launchpad allowing OpenClaw agents to autonomously deploy and manage memecoin launches.",
+      "status": "unknown",
+      "notes": "source: moltecosystem.xyz 2026-02-12",
+      "id": "eco_molt_088"
+    },
+    {
+      "name": "minibook",
+      "url": "",
+      "category": "social",
+      "subcategory": "forum",
+      "description": "Self-hosted lightweight Moltbook instance for agent collaboration on software projects.",
+      "status": "unknown",
+      "notes": "source: moltecosystem.xyz 2026-02-12",
+      "id": "eco_molt_089"
+    },
+    {
+      "name": "Minion-Molt",
+      "url": "",
+      "category": "developer-tools",
+      "subcategory": "library",
+      "description": "Python integration library (Minion framework) for connecting AI agents to Moltbook.",
+      "status": "unknown",
+      "notes": "source: moltecosystem.xyz 2026-02-12",
+      "id": "eco_molt_090"
+    },
+    {
+      "name": "Moltblox",
+      "url": "",
+      "category": "gaming",
+      "subcategory": "battle-royale",
+      "description": "Battle Royale game integrating Moltbook identity for on-chain claims on Solana.",
+      "status": "unknown",
+      "notes": "source: moltecosystem.xyz 2026-02-12",
+      "id": "eco_molt_091"
+    },
+    {
+      "name": "Moltbook MCP Server",
+      "url": "",
+      "category": "developer-tools",
+      "subcategory": "mcp",
+      "description": "MCP server for Moltbook with engagement tracking and session analytics.",
+      "status": "unknown",
+      "notes": "source: moltecosystem.xyz 2026-02-12",
+      "id": "eco_molt_092"
+    },
+    {
+      "name": "Moltbook Town",
+      "url": "",
+      "category": "social",
+      "subcategory": "visualization",
+      "description": "Pixel art town displaying random active agents every 30s with interactive chats.",
+      "status": "unknown",
+      "notes": "source: moltecosystem.xyz 2026-02-12",
+      "id": "eco_molt_093"
+    },
+    {
+      "name": "Moltbook Web Client",
+      "url": "",
+      "category": "social",
+      "subcategory": "aggregator",
+      "description": "Local web server (Bun/HTMX/SQLite) for browsing Moltbook feeds and composing posts.",
+      "status": "unknown",
+      "notes": "source: moltecosystem.xyz 2026-02-12",
+      "id": "eco_molt_094"
+    },
+    {
+      "name": "molt_line",
+      "url": "",
+      "category": "messaging",
+      "subcategory": "encrypted",
+      "description": "Private XMTP-based messaging for OpenClaw AI agents.",
+      "status": "unknown",
+      "notes": "source: moltecosystem.xyz 2026-02-12",
+      "id": "eco_molt_095"
+    },
+    {
+      "name": "Clawdmint",
+      "url": "https://clawdmint.xyz/",
+      "category": "defi",
+      "subcategory": "nft-launchpad",
+      "description": "Agent-native NFT launchpad on Base. AI agents deploy, humans mint.",
+      "status": "unknown",
+      "notes": "source: moltecosystem.xyz 2026-02-12",
+      "id": "eco_molt_096"
+    },
+    {
+      "name": "Molt Founders",
+      "url": "https://moltfounders.com/",
+      "category": "social",
+      "subcategory": "matching",
+      "description": "Agent co-founder matching and team formation platform.",
+      "status": "unknown",
+      "notes": "source: moltecosystem.xyz 2026-02-12",
+      "id": "eco_molt_097"
+    },
+    {
+      "name": "Phosphors",
+      "url": "",
+      "category": "marketplace",
+      "subcategory": "art",
+      "description": "AI-to-AI art gallery with x402 micropayments on Base.",
+      "status": "unknown",
+      "notes": "source: moltecosystem.xyz 2026-02-12",
+      "id": "eco_molt_098"
+    },
+    {
+      "name": "ClawMap",
+      "url": "",
+      "category": "social",
+      "subcategory": "visualization",
+      "description": "Interactive world map for AI agents with live chat and directory.",
+      "status": "unknown",
+      "notes": "source: moltecosystem.xyz 2026-02-12",
+      "id": "eco_molt_099"
+    },
+    {
+      "name": "Moltium",
+      "url": "https://moltium.fun",
+      "category": "defi",
+      "subcategory": "trading",
+      "description": "Trade network for AI agents to trade and launch tokens.",
+      "status": "unknown",
+      "notes": "source: moltecosystem.xyz 2026-02-12",
+      "id": "eco_molt_100"
     }
   ],
-  "lastUpdated": "2026-02-04T05:12:51Z"
+  "lastUpdated": "2026-02-12T19:46:31Z"
 }
