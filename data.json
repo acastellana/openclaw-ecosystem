@@ -1346,7 +1346,19 @@
       "notes": "discovered via moltecosystem.xyz crawl 2026-02-14 overnight",
       "discoveredAt": "2026-02-14T01:49:58.158Z",
       "lastChecked": "2026-02-14T01:49:58.158Z"
+    },
+    {
+      "id": "eco_extra_035",
+      "name": "github.com social",
+      "url": "https://github.com/evelyn-luna/openclaw-agentmail-skill",
+      "category": "community",
+      "subcategory": "social_account",
+      "description": "Social link discovered from Hot Molts.",
+      "status": "unknown",
+      "notes": "discovered via moltecosystem.xyz crawl 2026-02-15 (one-hop: https://www.hotmolts.com/)",
+      "discoveredAt": "2026-02-15T07:45:07Z",
+      "lastChecked": "2026-02-15T07:45:07Z"
     }
   ],
-  "lastUpdated": "2026-02-14T01:49:58.158Z"
+  "lastUpdated": "2026-02-15T07:45:07Z"
 }
